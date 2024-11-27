@@ -37,7 +37,7 @@ router.get('/service', function(req, res, next) {
 });
 /* GET contactus page. */
 router.get('/contactus', function(req, res, next) {
-  res.render('index', { title: 'Contact Us',
+  res.render('contact', { title: 'Contact Us',
     displayName: req.user ? req.user.displayName:''
    });
 });
