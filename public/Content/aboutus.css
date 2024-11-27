@@ -1,109 +1,51 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+#project1-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 500px; */
+    flex-direction: column;
+    padding: 40px 0 60px 0;
 }
 
-h1 {
-    color: #4CAF50;
-    margin-bottom: 20px;
-    font-size: 2rem;
+.pic1-header {
+    font-size: 60px;
+    padding-bottom: 10px;
+}
+
+.project-one-pic {
+    width: 50vw;
+    max-width: 500px;
+    padding-bottom: 40px;
+}
+
+.pic1-text {
     text-align: center;
+    width: 80vw;
+    max-width: 600px;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+#project2-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100px; */
+    flex-direction: column;
 }
 
-/* Button Styles */
-.btn {
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: bold;
+.pic2-header {
+    font-size: 60px;
+    padding: 10px 0 20px 0;
+}
+
+.pic2-settings {
+    width: 40vw;
+    max-width: 500px;
+    padding-bottom: 10px;
+}
+
+.pic2-text {
     text-align: center;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    width: 80vw;
+    max-width: 600px;
+    padding: 20px 0 80px 0;
 }
-
-.btn-primary {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #45a049;
-}
-
-.btn-danger {
-    background-color: #f44336;
-    color: white;
-}
-
-.btn-danger:hover {
-    background-color: #d32f2f;
-}
-
-.btn-sm {
-    padding: 5px 10px;
-    font-size: 0.875rem;
-}
-
-/* Table Styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    vertical-align: middle;
-}
-
-th {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-.table-hover tbody tr:hover td {
-    background-color: #f1f1f1;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-
-    th, td {
-        font-size: 0.875rem;
-    }
-
-    .btn {
-        font-size: 0.9rem;
-    }
-}
-

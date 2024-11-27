@@ -19,7 +19,7 @@ router.get('/home', function(req, res, next) {
 });
 /* GET About page. */
 router.get('/aboutus', function(req, res, next) {
-  res.render('index', { 
+  res.render('aboutus', { 
     title: 'About us',
     displayName: req.user ? req.user.displayName:'' });
 });

@@ -1,0 +1,65 @@
+.title {
+    text-align: center;
+    font-size: 32px; /* Example of additional styling */
+    color: #111;
+    margin-bottom: 20px;
+}
+
+#contact {
+    background-color: #f9f9f9; 
+    padding: 40px;
+    max-width: 500px;
+    margin: 50px auto; 
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+#contact p.section__text__p1 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#contact h1.title {
+    font-size: 32px;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
+    width: 150%; /* Ensure all input fields take the full width of the container */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#contact textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+    color: #999;
+}
+
+#contact button[type="submit"] {
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+#contact button[type="submit"]:hover {
+    background-color: #0056b3; 
+}
