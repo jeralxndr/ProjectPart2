@@ -9,25 +9,25 @@
             <%if (typeof displayName=='string' && displayName) { %>
 
             <a href="/bookslist/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i>Add Book
+                <i class="fas fa-plus-circle"></i>Add Prayer Entry
             </a>
             <%}%>
             <table class="table table-bordered table-striped table-hover">
             <tr class="d-flex">
                 <%if (typeof displayName=='string' && displayName) { %>
-                    <th class="text-center col-2">Name</th>
-                    <th class="text-center col-2">Author</th>
-                    <th class="text-center col-1">Published</th>
-                    <th class="col-4">Description</th>
-                    <th class="text-center col-1">Price</th>
+                    <th class="text-center col-2">Fajr</th>
+                    <th class="text-center col-2">Dhuhr</th>
+                    <th class="text-center col-1">Asr</th>
+                    <th class="col-4">Maghrib</th>
+                    <th class="text-center col-1">Isha</th>
                     <th class="text-center col-1">Edit</th>
                     <th class="text-center col-1">Delete</th>
                 <% } else { %>
                     <th class="text-center col-2">Name</th>
                     <th class="text-center col-2">Author</th>
-                    <th class="text-center col-1">Published</th>
-                    <th class="col-4">Description</th>
-                    <th class="text-center col-1">Price</th>
+                    <th class="text-center col-2">Published</th>
+                    <th class="col-2">Description</th>
+                    <th class="text-center col-2">Price</th>
                 <% } %>
                 </tr>
 <% for(let count=0;count<BookList.length;count++) { %>
