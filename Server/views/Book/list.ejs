@@ -25,9 +25,9 @@
                 <% } else { %>
                     <th class="text-center col-2">Fajr</th>
                     <th class="text-center col-2">Dhuhr</th>
-                    <th class="text-center col-1">Asr</th>
-                    <th class="col-4">Maghrib</th>
-                    <th class="text-center col-1">Isha</th>
+                    <th class="text-center col-2">Asr</th>
+                    <th class="col-2">Maghrib</th>
+                    <th class="text-center col-2">Isha</th>
                 <% } %>
                 </tr>
 <% for(let count=0;count<BookList.length;count++) { %>
@@ -53,9 +53,9 @@
                     <%} else { %>
                         <td class="text-center col-2"><%= BookList[count].Name %></td>
                         <td class="text-center col-2"><%= BookList[count].Author %></td>
-                        <td class="text-center col-1"><%= BookList[count].Published%></td>
-                        <td class="col-4"><%= BookList[count].Description %></td>
-                        <td class="text-center col-1"><%= BookList[count].Price %></td>
+                        <td class="text-center col-2"><%= BookList[count].Published%></td>
+                        <td class="col-2"><%= BookList[count].Description %></td>
+                        <td class="text-center col-2"><%= BookList[count].Price %></td>
                     <% } %>
                 </tr>
                     <%} %>
