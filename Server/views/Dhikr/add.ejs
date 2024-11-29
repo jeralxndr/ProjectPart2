@@ -7,29 +7,31 @@
             <h1><%= title %></h1>
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="nameTextField">Fajr</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter Fajr time" name="Name" required>
+                    <label for="nameTextField">Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter your Name" name="Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="contentTextField">Dhuhr</label>
-                    <input type="text" class="form-control" id="contentTextField" placeholder="Enter Dhuhr time" name="content" required>
+                    <label for="contentTextField">Content</label>
+                    <input type="text" class="form-control" id="contentTextField" placeholder="Enter the Content" name="content" required>
                 </div>
                 <div class="form-group">
-                    <label for="categoryTextField">Asr</label>
-                    <input type="text" class="form-control" id="categoryTextField" placeholder="Enter Asr time" name="category" required>
+                    <label for="categoryTextField">Category</label>
+                    <input type="text" class="form-control" id="categoryTextField" placeholder="Enter Category of Dhikr" name="category" required>
                 </div>
                 <div class="form-group">
-                    <label for="rewardTextArea">Maghrib</label>
-                    <textarea type="text" class="form-control" id="rewardTextArea"  placeholder="Enter Maghrib time" name="reward" required></textarea>
+                    <label for="rewardTextArea">Reward</label>
+                    <textarea type="text" class="form-control" id="rewardTextArea"  placeholder="Enter Estimated Reward" name="reward" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="timesRecitedTextField">Isha</label>
-                    <input type="text" class="form-control" id="timesRecitedTextField" placeholder="Enter Isha time" name="timesRecited" required>
+                    <label for="timesRecitedTextField">Times Recited</label>
+                    <input type="text" class="form-control" id="timesRecitedTextField" placeholder="Enter Number of Times Recited" name="timesRecited" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit
                 <i class="fas fa-edit"></i></button>  
-                <button class="btn btn-warning" type="submit">Cancel
-                    <i class="fas fa-undo"></i></button>    
+
+                <a class="btn btn-warning" href="/dhikr">Cancel
+                    <i class="fas fa-undo"></i>
+                    </a>    
             </form>
         </div>
     </div>

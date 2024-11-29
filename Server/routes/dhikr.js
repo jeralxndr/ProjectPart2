@@ -1,130 +1,125 @@
 var express = require('express');
 var router = express.Router();
-let mongoose=require('mongoose');
-//Telling my router that i have this model
+let Dhikr = require("../model/dhikr.js");
 
-let Dhikr = require("../model/dhikr.js")
-let dhikrController = require('../Controllers/dhikr.js')
-function requireAuth(req,res,next)
-{
-    if (!req.isAuthenticated())
-    {
-        return res.redirect('/login');
-    }
-    next();
-}
- 
-
-router.get('/',async(req,res,next)=>{
-try{
-    const DhikrList= await Dhikr.find();
-    res.render('Dhikr/list', {
-        title:'Dhikr List',
-        displayName: req.user?req.user.displayName:'',
-        DhikrList:DhikrList
-    })}
-    catch(err){
-        console.error(err);
-        res.render('Dhikr/list',{
-            title: 'Error',
-            error:'Error on the server'
-        })
-    }
-    });
-
-router.get('/add',async(req,res,next)=>{
-    try{
-        res.render('Dhikr/add',{
-            title: 'Add Dhikr',
-            displayName: req.user?req.user.displayName:'' 
-        })
-
-    }
-    catch(err)
-    {
-        console.error(err);
-        res.render('Dhikr/list',{
-            error:'Error on the server'
-        })
-    }
-});
-
-
-
-router.post('/add',async(req,res,next)=>{
-    try{
-        let newDhikr= new Dhikr ({
-            "Name":req.body.Name,
-            "content":req.body.content,
-            "category":req.body.category,
-            "reward":req.body.reward,
-            "timesRecited":req.body.timesRecited
+// GET /dhikr - List all Dhikr
+router.get('/', async (req, res, next) => {
+    try {
+        const DhikrList = await Dhikr.find();
+        res.render('Dhikr/list', {
+            title: 'Dhikr List', // Title is passed here
+            displayName: req.user ? req.user.displayName : '',
+            DhikrList: DhikrList
         });
-        await newDhikr.save()
-            res.redirect('/dhikr');
-        }
-    
-    catch(err)
-        {
-            console.error(err);
-            res.render('Dhikr/list',{
-                error:'Error on the server'
-            })
-
-        }
-    })
-
-router.get('/edit/:id',async(req,res,next)=>{
-    try{
-        const id=req.params.id;
-        const dhikrToEdit=await Dhikr.findById(id);
-        res.render('Dhikr/edit',
-            {
-                title:'Edit Dhikr',
-                displayName: req.user?req.user.displayName:'',
-                Dhikr:dhikrToEdit
-            }
-        )
-    }
-    catch(err)
-    {
+    } catch (err) {
         console.error(err);
-        next(err); //passing the error
+        res.render('Dhikr/list', {
+            title: 'Error',
+            error: 'Error retrieving the Dhikr list.'
+        });
     }
 });
-router.post('/edit/:id',async(req,res,next)=>{
-    try{
-        let id=req.params.id;
+
+// GET /dhikr/add - Render the Add page
+router.get('/add', async (req, res, next) => {
+    try {
+        res.render('Dhikr/add', {
+            title: 'Add Dhikr', // Title is passed here
+            displayName: req.user ? req.user.displayName : ''
+        });
+    } catch (err) {
+        console.error(err);
+        res.render('Dhikr/list', {
+            title: 'Error',
+            error: 'Error loading the Add Dhikr page.'
+        });
+    }
+});
+
+// POST /dhikr/add - Add a new Dhikr
+router.post('/add', async (req, res, next) => {
+    try {
+        let newDhikr = new Dhikr({
+            Name: req.body.Name,
+            content: req.body.content,
+            category: req.body.category,
+            reward: req.body.reward,
+            timesRecited: req.body.timesRecited
+        });
+        await newDhikr.save();
+        res.redirect('/dhikr');
+    } catch (err) {
+        console.error(err);
+        res.render('Dhikr/add', {
+            title: 'Add Dhikr',
+            error: 'Error saving the Dhikr.'
+        });
+    }
+});
+
+// GET /dhikr/edit/:id - Render Edit page
+router.get('/edit/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const dhikrToEdit = await Dhikr.findById(id);
+
+        if (!dhikrToEdit) {
+            return res.render('Dhikr/list', {
+                title: 'Dhikr List',
+                error: 'Dhikr not found.',
+            });
+        }
+
+        res.render('Dhikr/edit', {
+            title: 'Edit Dhikr',
+            displayName: req.user ? req.user.displayName : '',
+            Dhikr: dhikrToEdit, // Pass the Dhikr object to the view
+        });
+    } catch (err) {
+        console.error(err);
+        res.render('Dhikr/list', {
+            title: 'Error',
+            error: 'Error loading the Edit Dhikr page.',
+        });
+    }
+});
+router.post('/edit/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+
+        // Update the document in the database
         await Dhikr.findByIdAndUpdate(id, {
-            "Name":req.body.Name,
-            "content":req.body.content,
-            "category":req.body.category,
-            "reward":req.body.reward,
-            "timesRecited":req.body.timesRecited
-        })
-        await Dhikr.findByIdAndUpdate (id,updatedDhikr).then(()=>{
-            res.redirect('/')
-        })
-    }
-    catch(err){
+            Name: req.body.Name,
+            content: req.body.content,
+            category: req.body.category,
+            reward: req.body.reward,
+            timesRecited: req.body.timesRecited
+        });
+
+        // Redirect back to the list page after update
+        res.redirect('/dhikr');
+    } catch (err) {
         console.error(err);
-        res.render('Dhikr/list',{
-            error:'Error on the server'
-        })
+        res.render('Dhikr/edit', {
+            title: 'Edit Dhikr',
+            error: 'Error updating the Dhikr.',
+            Dhikr: req.body // Pass the current form data back to the view
+        });
     }
 });
-router.get('/delete/:id',async(req,res,next)=>{
-    try{
-        let id=req.params.id;
-        await Dhikr.deleteOne({_id:id}).then(()=>{
-            res.redirect('/')
-        })
-    }
-    catch(error){
+// GET /dhikr/delete/:id - Delete a Dhikr
+router.get('/delete/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        await Dhikr.findByIdAndDelete(id);
+        res.redirect('/dhikr');
+    } catch (err) {
         console.error(err);
-        res.render('Dhikr/list',{
-            error:'Error on the server'
-        })
+        res.render('Dhikr/list', {
+            title: 'Error',
+            error: 'Error deleting the Dhikr.'
+        });
     }
 });
-module.exports=router;
+
+module.exports = router;

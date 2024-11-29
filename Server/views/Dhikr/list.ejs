@@ -1,5 +1,5 @@
-<%- include ../Partials/header.ejs %>
-<%- include ../Partials/main_nav.ejs %>
+<%- include ../Partials/header.ejs%>
+<%- include ../Partials/main_nav.ejs%>
 
 <!-- Dhikr Database -->
 <main class="container">
@@ -37,7 +37,7 @@
                                 <td class="text-center"><%= dhikr.reward %></td>
                                 <td class="text-center"><%= dhikr.timesRecited %></td>
                                 <td class="text-center">
-                                    <a href="/dhikr/edit/<%= dhikr._id %>" class="btn btn-primary btn-sm">
+                                    <a href="/dhikr/edit/<%= dhikr.id %>" class="btn btn-primary btn-sm">
                                         <i class="fas fa-pencil-alt"></i> Edit
                                     </a>
                                 </td>
