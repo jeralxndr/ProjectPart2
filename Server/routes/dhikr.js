@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 let mongoose=require('mongoose');
 //Telling my router that i have this model
-let Book = require("../model/book")
-const book=require("../model/book")
-let bookController = require('../controllers/book.js')
+
+let Dhikr = require("../model/dhikr.js")
+let dhikrController = require('../Controllers/dhikr.js')
 function requireAuth(req,res,next)
 {
     if (!req.isAuthenticated())
@@ -17,15 +17,16 @@ function requireAuth(req,res,next)
 
 router.get('/',async(req,res,next)=>{
 try{
-    const BookList= await Book.find();
-    res.render('Book/list', {
-        title:'Books',
+    const DhikrList= await Dhikr.find();
+    res.render('Dhikr/list', {
+        title:'Dhikr List',
         displayName: req.user?req.user.displayName:'',
-        BookList:BookList
+        DhikrList:DhikrList
     })}
     catch(err){
         console.error(err);
-        res.render('Book/list',{
+        res.render('Dhikr/list',{
+            title: 'Error',
             error:'Error on the server'
         })
     }
@@ -33,8 +34,8 @@ try{
 
 router.get('/add',async(req,res,next)=>{
     try{
-        res.render('Book/add',{
-            title: 'Add Book',
+        res.render('Dhikr/add',{
+            title: 'Add Dhikr',
             displayName: req.user?req.user.displayName:'' 
         })
 
@@ -42,7 +43,7 @@ router.get('/add',async(req,res,next)=>{
     catch(err)
     {
         console.error(err);
-        res.render('Book/list',{
+        res.render('Dhikr/list',{
             error:'Error on the server'
         })
     }
@@ -52,21 +53,21 @@ router.get('/add',async(req,res,next)=>{
 
 router.post('/add',async(req,res,next)=>{
     try{
-        let newBook= Book ({
+        let newDhikr= new Dhikr ({
             "Name":req.body.Name,
-            "Author":req.body.Author,
-            "Published":req.body.Published,
-            "Description":req.body.Description,
-            "Price":req.body.Price
+            "content":req.body.content,
+            "category":req.body.category,
+            "reward":req.body.reward,
+            "timesRecited":req.body.timesRecited
         });
-        Book.create(newBook).then(()=>{
-            res.redirect('/bookslist');
-        })
-    }
+        await newDhikr.save()
+            res.redirect('/dhikr');
+        }
+    
     catch(err)
         {
             console.error(err);
-            res.render('/bookslist',{
+            res.render('Dhikr/list',{
                 error:'Error on the server'
             })
 
@@ -76,12 +77,12 @@ router.post('/add',async(req,res,next)=>{
 router.get('/edit/:id',async(req,res,next)=>{
     try{
         const id=req.params.id;
-        const bookToEdit=await Book.findById(id);
-        res.render('Book/edit',
+        const dhikrToEdit=await Dhikr.findById(id);
+        res.render('Dhikr/edit',
             {
-                title:'Edit Book',
+                title:'Edit Dhikr',
                 displayName: req.user?req.user.displayName:'',
-                Book:bookToEdit
+                Dhikr:dhikrToEdit
             }
         )
     }
@@ -94,21 +95,20 @@ router.get('/edit/:id',async(req,res,next)=>{
 router.post('/edit/:id',async(req,res,next)=>{
     try{
         let id=req.params.id;
-        let updatedBook = Book({
-            "_id":id,
+        await Dhikr.findByIdAndUpdate(id, {
             "Name":req.body.Name,
-            "Author":req.body.Author,
-            "Published":req.body.Published,
-            "Description":req.body.Description,
-            "Price":req.body.Price
+            "content":req.body.content,
+            "category":req.body.category,
+            "reward":req.body.reward,
+            "timesRecited":req.body.timesRecited
         })
-        Book.findByIdAndUpdate (id,updatedBook).then(()=>{
-            res.redirect('/bookslist')
+        await Dhikr.findByIdAndUpdate (id,updatedDhikr).then(()=>{
+            res.redirect('/')
         })
     }
     catch(err){
         console.error(err);
-        res.render('/bookslist',{
+        res.render('Dhikr/list',{
             error:'Error on the server'
         })
     }
@@ -116,13 +116,13 @@ router.post('/edit/:id',async(req,res,next)=>{
 router.get('/delete/:id',async(req,res,next)=>{
     try{
         let id=req.params.id;
-        Book.deleteOne({_id:id}).then(()=>{
-            res.redirect('/bookslist')
+        await Dhikr.deleteOne({_id:id}).then(()=>{
+            res.redirect('/')
         })
     }
     catch(error){
         console.error(err);
-        res.render('/bookslist',{
+        res.render('Dhikr/list',{
             error:'Error on the server'
         })
     }

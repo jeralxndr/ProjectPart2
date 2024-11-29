@@ -1,0 +1,58 @@
+<%- include ../Partials/header.ejs %>
+<%- include ../Partials/main_nav.ejs %>
+
+<!-- Dhikr Database -->
+<main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <h1><%= title %></h1>
+            <br>
+            <a href="/dhikr/add" class="btn btn-primary" role="button">
+                <i class="fas fa-plus-circle"></i> Add Dhikr
+            </a>
+            <br><br>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Content</th>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Reward</th>
+                        <th class="text-center">Times Recited</th>
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (DhikrList.length === 0) { %>
+                        <tr>
+                            <td colspan="7" class="text-center">No Dhikr found. Click "Add Dhikr" to create a new entry.</td>
+                        </tr>
+                    <% } else { %>
+                        <% for (let dhikr of DhikrList) { %>
+                            <tr>
+                                <td class="text-center"><%= dhikr.Name %></td>
+                                <td class="text-center"><%= dhikr.content %></td>
+                                <td class="text-center"><%= dhikr.category %></td>
+                                <td class="text-center"><%= dhikr.reward %></td>
+                                <td class="text-center"><%= dhikr.timesRecited %></td>
+                                <td class="text-center">
+                                    <a href="/dhikr/edit/<%= dhikr._id %>" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-pencil-alt"></i> Edit
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="/dhikr/delete/<%= dhikr._id %>" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<%- include ../Partials/footer.ejs %>
