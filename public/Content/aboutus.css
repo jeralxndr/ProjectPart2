@@ -10,18 +10,21 @@
 .pic1-header {
     font-size: 60px;
     padding-bottom: 10px;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .project-one-pic {
     width: 50vw;
     max-width: 500px;
     padding-bottom: 40px;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .pic1-text {
     text-align: center;
     width: 80vw;
     max-width: 600px;
+    animation: fadeIn 2s ease-in-out;
 }
 
 #project2-container {
@@ -35,12 +38,14 @@
 .pic2-header {
     font-size: 60px;
     padding: 10px 0 20px 0;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .pic2-settings {
     width: 40vw;
     max-width: 500px;
     padding-bottom: 10px;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .pic2-text {
@@ -48,4 +53,5 @@
     width: 80vw;
     max-width: 600px;
     padding: 20px 0 80px 0;
+    animation: fadeIn 2s ease-in-out;
 }
