@@ -93,7 +93,12 @@ html, body {
 
 /* ------------------------------------------------ */
 
-.navbar {
-    color: red;
+.nav-logo {
+    height: clamp(30px, 10vw, 60px);
 }
+
+.header-font {
+    font-family: "Libre Baskervville", serif;
+}
+
 
