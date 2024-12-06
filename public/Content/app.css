@@ -34,15 +34,15 @@ html, body {
 
 .banner-text {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -65%);
     font-size: 2.5em; /* Adjust the font size here */
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker background for better text visibility */
+    /* background-color: rgba(0, 0, 0, 0.6);  */
     padding: 20px 40px;
     border-radius: 10px;
     animation: fadeIn 0.4s ease-in-out; /* Simple fade-in animation */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Text shadow for depth */
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);  */
 }
 
 @keyframes fadeIn {
