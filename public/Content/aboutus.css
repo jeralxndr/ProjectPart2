@@ -10,21 +10,21 @@
 .pic1-header {
     font-size: 60px;
     padding-bottom: 10px;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 .project-one-pic {
     width: 50vw;
     max-width: 500px;
     padding-bottom: 40px;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 .pic1-text {
     text-align: center;
     width: 80vw;
     max-width: 600px;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 #project2-container {
@@ -38,14 +38,14 @@
 .pic2-header {
     font-size: 60px;
     padding: 10px 0 20px 0;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 .pic2-settings {
     width: 40vw;
     max-width: 500px;
     padding-bottom: 10px;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 .pic2-text {
@@ -53,19 +53,5 @@
     width: 80vw;
     max-width: 600px;
     padding: 20px 0 80px 0;
-    animation: fadeIn 2s ease-in-out;
-}
-.quote {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-    color: #555;
-}
-
-.quote p {
-    margin: 0;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    display: inline-block;
+    animation: fadeIn 0.4s ease-in-out;
 }
